@@ -1,228 +1,923 @@
 <!DOCTYPE html>
 <html lang="ko">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>미니멀 포트폴리오</title>
-    <style>
-        /* ==========================================
-           [1. 전체 스타일 정의 (색상 및 폰트)]
-           ========================================== */
-        :root {
-            --bg-main: #0a0a0a;        /* 전체 배경색 (검은색) */
-            --text-primary: #ffffff;   /* 기본 글자색 (흰색) */
-            --text-secondary: #888888; /* 보조 글자색 (회색) */
-            --accent: #3b82f6;         /* 포인트 색상 (파란색) */
-            --card-bg: #141414;        /* 카드 배경색 */
-            --border: #262626;         /* 테두리 색상 */
-        }
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>기계제도 포트폴리오</title>
 
-        * { margin: 0; padding: 0; box-sizing: border-box; }
-        html { scroll-behavior: smooth; }
-        body {
-            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
-            background-color: var(--bg-main);
-            color: var(--text-primary);
-            line-height: 1.6;
-        }
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;600;700;800&display=swap');
 
-        /* 레이아웃 규격 */
-        .page {
-            min-height: 100vh;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            max-width: 900px;
-            margin: 0 auto;
-            padding: 4rem 2rem;
-            border-bottom: 1px solid var(--border);
-        }
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
 
-        /* [1장] 메인 소개 */
-        .hero .subtitle {
-            color: var(--accent);
-            font-size: 0.95rem;
-            font-weight: 600;
-            letter-spacing: 2px;
-            text-transform: uppercase;
-            margin-bottom: 1.5rem;
-        }
-        .hero h1 {
-            font-size: clamp(2rem, 5vw, 3.5rem);
-            font-weight: 700;
-            line-height: 1.25;
-            margin-bottom: 2rem;
-        }
-        .hero-info {
-            display: flex;
-            gap: 2rem;
-            color: var(--text-secondary);
-            font-size: 1rem;
-        }
+html {
+    scroll-behavior: smooth;
+}
 
-        /* 공통 헤더 */
-        .section-title {
-            font-size: 0.9rem;
-            color: var(--text-secondary);
-            letter-spacing: 2px;
-            text-transform: uppercase;
-            margin-bottom: 3rem;
-        }
+body {
+    font-family: 'Noto Sans KR', sans-serif;
+    color: white;
+    min-height: 100vh;
+    background:
+        radial-gradient(circle at 15% 20%, rgba(180,100,255,.35), transparent 32%),
+        radial-gradient(circle at 85% 75%, rgba(100,70,255,.3), transparent 35%),
+        linear-gradient(135deg, #100822, #241047, #4c1d78);
+}
 
-        /* [2장] 프로젝트 카드 */
-        .project-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 2rem;
-        }
-        .project-card {
-            background-color: var(--card-bg);
-            border: 1px solid var(--border);
-            border-radius: 12px;
-            padding: 2rem;
-            transition: transform 0.3s ease, border-color 0.3s ease;
-        }
-        .project-card:hover {
-            transform: translateY(-6px);
-            border-color: var(--accent);
-        }
-        .project-card .tag {
-            font-size: 0.8rem;
-            color: var(--accent);
-            font-weight: 600;
-            margin-bottom: 0.8rem;
-            display: block;
-        }
-        .project-card h3 {
-            font-size: 1.4rem;
-            margin-bottom: 0.8rem;
-        }
-        .project-card p {
-            color: var(--text-secondary);
-            font-size: 0.95rem;
-            margin-bottom: 1.5rem;
-        }
-        .project-card a {
-            color: var(--text-primary);
-            text-decoration: none;
-            font-size: 0.9rem;
-            font-weight: 600;
-            border-bottom: 1px solid var(--accent);
-            padding-bottom: 2px;
-        }
+.container {
+    width: 90%;
+    max-width: 1150px;
+    margin: auto;
+}
 
-        /* [3장] 핵심 역량 */
-        .skills-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-            gap: 1.5rem;
-        }
-        .skill-box {
-            border: 1px solid var(--border);
-            padding: 1.8rem;
-            border-radius: 12px;
-        }
-        .skill-box h3 {
-            font-size: 1.1rem;
-            margin-bottom: 0.8rem;
-            color: var(--text-primary);
-        }
-        .skill-box p {
-            color: var(--text-secondary);
-            font-size: 0.9rem;
-        }
+.glass {
+    background: rgba(255,255,255,.08);
+    border: 1px solid rgba(255,255,255,.15);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    box-shadow: 0 25px 80px rgba(0,0,0,.25);
+}
 
-        footer {
-            text-align: center;
-            padding: 3rem 0;
-            color: var(--text-secondary);
-            font-size: 0.85rem;
-        }
-    </style>
+/* 상단 */
+
+header {
+    padding: 30px 0;
+}
+
+.nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.logo {
+    font-size: 15px;
+    font-weight: 800;
+    letter-spacing: 2px;
+}
+
+.badge {
+    padding: 8px 14px;
+    border-radius: 50px;
+    font-size: 12px;
+    color: #dfd1ff;
+    background: rgba(255,255,255,.07);
+    border: 1px solid rgba(255,255,255,.15);
+}
+
+/* 첫 페이지 */
+
+.hero {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+}
+
+.hero-content {
+    width: 100%;
+    max-width: 900px;
+    margin: auto;
+}
+
+.small-title {
+    color: #cbb3ff;
+    font-size: 13px;
+    font-weight: 700;
+    letter-spacing: 4px;
+    margin-bottom: 20px;
+}
+
+h1 {
+    font-size: clamp(45px, 7vw, 80px);
+    line-height: 1.05;
+    letter-spacing: -4px;
+    margin-bottom: 25px;
+}
+
+.description {
+    color: #d5cae3;
+    font-size: 16px;
+    line-height: 1.8;
+    max-width: 650px;
+}
+
+/* 학생 정보 */
+
+.info-box {
+    margin-top: 40px;
+    padding: 30px;
+    border-radius: 25px;
+}
+
+.input-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 18px;
+}
+
+.input-box label {
+    display: block;
+    font-size: 12px;
+    color: #d7cae9;
+    margin-bottom: 8px;
+}
+
+.input-box input {
+    width: 100%;
+    padding: 15px;
+    border-radius: 12px;
+    border: 1px solid rgba(255,255,255,.15);
+    background: rgba(0,0,0,.2);
+    color: white;
+    outline: none;
+    font-size: 14px;
+}
+
+.input-box input:focus {
+    border-color: #b985ff;
+    box-shadow: 0 0 0 4px rgba(185,133,255,.12);
+}
+
+.start-btn {
+    width: 100%;
+    margin-top: 22px;
+    padding: 16px;
+    border: none;
+    border-radius: 14px;
+    cursor: pointer;
+    color: white;
+    font-size: 15px;
+    font-weight: 800;
+    background: linear-gradient(100deg,#9155f7,#bd83ff);
+    box-shadow: 0 12px 35px rgba(140,70,255,.3);
+    transition: .25s;
+}
+
+.start-btn:hover {
+    transform: translateY(-3px);
+}
+
+.note {
+    margin-top: 10px;
+    text-align: center;
+    color: #9e91af;
+    font-size: 11px;
+}
+
+/* 포트폴리오 */
+
+#portfolio {
+    min-height: 100vh;
+    padding: 110px 0;
+}
+
+.section-number {
+    color: #c5a6ff;
+    font-size: 12px;
+    letter-spacing: 3px;
+    font-weight: 700;
+}
+
+h2 {
+    margin-top: 10px;
+    font-size: clamp(35px,5vw,58px);
+    letter-spacing: -3px;
+}
+
+.section-description {
+    margin-top: 15px;
+    color: #cfc3dc;
+    line-height: 1.7;
+    max-width: 600px;
+}
+
+/* 도면 */
+
+.drawings {
+    margin-top: 50px;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 25px;
+}
+
+.drawing-card {
+    overflow: hidden;
+    border-radius: 22px;
+    background: rgba(255,255,255,.07);
+    border: 1px solid rgba(255,255,255,.14);
+    transition: .25s;
+}
+
+.drawing-card:hover {
+    transform: translateY(-6px);
+    border-color: rgba(190,150,255,.5);
+}
+
+.drawing-preview {
+    height: 300px;
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: rgba(0,0,0,.22);
+    overflow: hidden;
+}
+
+.drawing-preview img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    display: none;
+}
+
+.placeholder {
+    text-align: center;
+    color: #9e91ae;
+}
+
+.placeholder-icon {
+    font-size: 40px;
+    margin-bottom: 10px;
+}
+
+.placeholder strong {
+    display: block;
+    color: #e6ddf0;
+    font-size: 15px;
+    margin-bottom: 5px;
+}
+
+.placeholder span {
+    font-size: 11px;
+}
+
+/* 도면 하단 */
+
+.drawing-bottom {
+    padding: 18px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    border-top: 1px solid rgba(255,255,255,.1);
+}
+
+.drawing-title {
+    flex: 1;
+    background: transparent;
+    border: none;
+    outline: none;
+    color: white;
+    font-size: 14px;
+    font-weight: 700;
+}
+
+.drawing-title::placeholder {
+    color: #92869e;
+}
+
+.upload-btn {
+    cursor: pointer;
+    padding: 10px 13px;
+    border-radius: 10px;
+    font-size: 11px;
+    font-weight: 700;
+    background: rgba(155,90,255,.25);
+    border: 1px solid rgba(200,160,255,.3);
+}
+
+.upload-btn:hover {
+    background: rgba(155,90,255,.4);
+}
+
+.upload-btn input {
+    display: none;
+}
+
+/* 학생 정보 표시 */
+
+.student-profile {
+    margin-top: 50px;
+    padding: 25px;
+    border-radius: 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 15px;
+}
+
+.profile-name {
+    font-size: 20px;
+    font-weight: 800;
+}
+
+.profile-info {
+    color: #c9bdd6;
+    font-size: 13px;
+    margin-top: 5px;
+}
+
+/* 모바일 */
+
+@media (max-width:700px) {
+
+    .input-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .drawings {
+        grid-template-columns: 1fr;
+    }
+
+    h1 {
+        letter-spacing: -2px;
+    }
+
+    .info-box {
+        padding: 22px;
+    }
+
+    .drawing-preview {
+        height: 240px;
+    }
+}
+</style>
 </head>
+
 <body>
 
-    <!-- ==========================================
-       [1장] 메인 소개 페이지 (HERO SECTION)
-       ========================================== -->
-    <section class="page hero">
-        <!-- ✏️ 수정영역: 직함/역할 -->
-        <div class="subtitle">CREATIVE DIRECTOR & EDITOR</div>
-        
-        <!-- ✏️ 수정영역: 메인 슬로건 및 이름 -->
-        <h1>본질에 집중하며,<br>명확한 가치를 만들어냅니다.<br>홍길동입니다.</h1>
-        
-        <!-- ✏️ 수정영역: 연락처 정보 -->
-        <div class="hero-info">
-            <p><strong>Email.</strong> contact@example.com</p>
-            <p><strong>Location.</strong> Seoul, Korea</p>
-        </div>
-    </section>
+<!-- 첫 페이지 -->
 
-    <!-- ==========================================
-       [2장] 핵심 프로젝트 페이지 (PROJECTS)
-       ========================================== -->
-    <section class="page">
-        <div class="section-title">01 / FEATURED WORK</div>
-        <div class="project-grid">
-            
-            <!-- 프로젝트 1 -->
-            <div class="project-card">
-                <!-- ✏️ 수정영역: 프로젝트 태그 -->
-                <span class="tag">VIDEO & SCRIPT</span>
-                <!-- ✏️ 수정영역: 프로젝트 제목 -->
-                <h3>올바른 언어생활 프로젝트</h3>
-                <!-- ✏️ 수정영역: 프로젝트 설명 -->
-                <p>청소년 언어문화 개선을 위한 교육용 영상 기획 및 스크립트 작성, 최종 편집 작업입니다.</p>
-                <!-- ✏️ 수정영역: 외부 링크 (youtube 또는 자료 링크 주소) -->
-                <a href="https://youtube.com" target="_blank">프로젝트 보기 →</a>
-            </div>
+<section class="hero">
 
-            <!-- 프로젝트 2 -->
-            <div class="project-card">
-                <span class="tag">DIRECTING & STORYBOARD</span>
-                <h3>모의 면접 비교 콘텐츠</h3>
-                <p>전문적/비전문적 면접 답변 사례를 비교 연출하여 스토리 구성 및 동영상을 제작했습니다.</p>
-                <a href="https://youtube.com" target="_blank">프로젝트 보기 →</a>
-            </div>
+<div class="container">
 
-        </div>
-    </section>
+<header>
 
-    <!-- ==========================================
-       [3장] 핵심 역량 페이지 (COMPETENCIES)
-       ========================================== -->
-    <section class="page">
-        <div class="section-title">02 / CORE SKILLS</div>
-        <div class="skills-grid">
-            
-            <!-- 역량 1 -->
-            <div class="skill-box">
-                <!-- ✏️ 수정영역: 역량 1 제목 및 설명 -->
-                <h3>기획 & 연출</h3>
-                <p>메시지의 핵심을 파악하여 스토리를 기획하고 연출을 구상합니다.</p>
-            </div>
+<div class="nav">
 
-            <!-- 역량 2 -->
-            <div class="skill-box">
-                <!-- ✏️ 수정영역: 역량 2 제목 및 설명 -->
-                <h3>영상 편집</h3>
-                <p>Premiere Pro를 활용한 시각적 편집 및 매끄러운 자막/음향 구성을 진행합니다.</p>
-            </div>
+<div class="logo">
+MECHANICAL PORTFOLIO
+</div>
 
-            <!-- 역량 3 -->
-            <div class="skill-box">
-                <!-- ✏️ 수정영역: 역량 3 제목 및 설명 -->
-                <h3>스크립트 작성</h3>
-                <p>전하고자 하는 바를 가독성 높은 문장과 대본으로 정리합니다.</p>
-            </div>
+<div class="badge">
+2026 · STUDENT
+</div>
 
-        </div>
+</div>
 
-        <footer>
-            <p>© 2026. All rights reserved.</p>
-        </footer>
-    </section>
+</header>
+
+
+<div class="hero-content">
+
+<div class="small-title">
+MY PORTFOLIO
+</div>
+
+<h1>
+기계제도<br>
+포트폴리오
+</h1>
+
+<p class="description">
+기계제도 수업에서 제작한 도면과 작업물을
+한곳에 정리한 나만의 포트폴리오입니다.
+</p>
+
+
+<div class="info-box glass">
+
+<div class="input-grid">
+
+<div class="input-box">
+
+<label>학번</label>
+
+<input
+id="studentNumber"
+type="text"
+placeholder="예) 10101">
+
+</div>
+
+
+<div class="input-box">
+
+<label>이름</label>
+
+<input
+id="studentName"
+type="text"
+placeholder="이름을 입력하세요">
+
+</div>
+
+
+<div class="input-box">
+
+<label>학교</label>
+
+<input
+id="school"
+type="text"
+placeholder="학교명을 입력하세요">
+
+</div>
+
+
+<div class="input-box">
+
+<label>학교 이메일</label>
+
+<input
+id="email"
+type="email"
+placeholder="example@school.com">
+
+</div>
+
+</div>
+
+
+<button
+class="start-btn"
+onclick="startPortfolio()">
+
+포트폴리오 시작하기 →
+
+</button>
+
+<div class="note">
+입력한 정보는 현재 브라우저에 저장됩니다.
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+</section>
+
+
+<!-- 포트폴리오 -->
+
+<section id="portfolio">
+
+<div class="container">
+
+<div class="section-number">
+01 / DRAWING ARCHIVE
+</div>
+
+<h2>
+기계제도 도면
+</h2>
+
+<p class="section-description">
+기계제도 수업에서 제작한 도면을 등록해보세요.
+총 4개의 도면을 저장할 수 있습니다.
+</p>
+
+
+<div class="drawings">
+
+
+<!-- 도면 1 -->
+
+<div class="drawing-card">
+
+<div class="drawing-preview">
+
+<img id="image1">
+
+<div
+class="placeholder"
+id="placeholder1">
+
+<div class="placeholder-icon">
+＋
+</div>
+
+<strong>
+도면 01
+</strong>
+
+<span>
+이미지를 선택해주세요
+</span>
+
+</div>
+
+</div>
+
+
+<div class="drawing-bottom">
+
+<input
+class="drawing-title"
+type="text"
+placeholder="도면 제목">
+
+<label class="upload-btn">
+
+이미지 선택
+
+<input
+type="file"
+accept="image/*"
+onchange="uploadImage(this,1)">
+
+</label>
+
+</div>
+
+</div>
+
+
+<!-- 도면 2 -->
+
+<div class="drawing-card">
+
+<div class="drawing-preview">
+
+<img id="image2">
+
+<div
+class="placeholder"
+id="placeholder2">
+
+<div class="placeholder-icon">
+＋
+</div>
+
+<strong>
+도면 02
+</strong>
+
+<span>
+이미지를 선택해주세요
+</span>
+
+</div>
+
+</div>
+
+
+<div class="drawing-bottom">
+
+<input
+class="drawing-title"
+type="text"
+placeholder="도면 제목">
+
+<label class="upload-btn">
+
+이미지 선택
+
+<input
+type="file"
+accept="image/*"
+onchange="uploadImage(this,2)">
+
+</label>
+
+</div>
+
+</div>
+
+
+<!-- 도면 3 -->
+
+<div class="drawing-card">
+
+<div class="drawing-preview">
+
+<img id="image3">
+
+<div
+class="placeholder"
+id="placeholder3">
+
+<div class="placeholder-icon">
+＋
+</div>
+
+<strong>
+도면 03
+</strong>
+
+<span>
+이미지를 선택해주세요
+</span>
+
+</div>
+
+</div>
+
+
+<div class="drawing-bottom">
+
+<input
+class="drawing-title"
+type="text"
+placeholder="도면 제목">
+
+<label class="upload-btn">
+
+이미지 선택
+
+<input
+type="file"
+accept="image/*"
+onchange="uploadImage(this,3)">
+
+</label>
+
+</div>
+
+</div>
+
+
+<!-- 도면 4 -->
+
+<div class="drawing-card">
+
+<div class="drawing-preview">
+
+<img id="image4">
+
+<div
+class="placeholder"
+id="placeholder4">
+
+<div class="placeholder-icon">
+＋
+</div>
+
+<strong>
+도면 04
+</strong>
+
+<span>
+이미지를 선택해주세요
+</span>
+
+</div>
+
+</div>
+
+
+<div class="drawing-bottom">
+
+<input
+class="drawing-title"
+type="text"
+placeholder="도면 제목">
+
+<label class="upload-btn">
+
+이미지 선택
+
+<input
+type="file"
+accept="image/*"
+onchange="uploadImage(this,4)">
+
+</label>
+
+</div>
+
+</div>
+
+</div>
+
+
+<!-- 학생 정보 -->
+
+<div class="student-profile glass">
+
+<div>
+
+<div
+class="profile-name"
+id="profileName">
+
+학생 포트폴리오
+
+</div>
+
+<div
+class="profile-info"
+id="profileInfo">
+
+학번 · 학교 · 이메일
+
+</div>
+
+</div>
+
+<div class="badge">
+MECHANICAL DESIGN
+</div>
+
+</div>
+
+</div>
+
+</section>
+
+
+<script>
+
+/* 포트폴리오 시작 */
+
+function startPortfolio() {
+
+const number =
+document.getElementById("studentNumber").value;
+
+const name =
+document.getElementById("studentName").value;
+
+const school =
+document.getElementById("school").value;
+
+const email =
+document.getElementById("email").value;
+
+
+localStorage.setItem(
+"studentNumber",
+number
+);
+
+localStorage.setItem(
+"studentName",
+name
+);
+
+localStorage.setItem(
+"school",
+school
+);
+
+localStorage.setItem(
+"email",
+email
+);
+
+
+updateProfile();
+
+
+document
+.getElementById("portfolio")
+.scrollIntoView({
+behavior:"smooth"
+});
+
+}
+
+
+/* 프로필 */
+
+function updateProfile() {
+
+const number =
+localStorage.getItem("studentNumber") || "";
+
+const name =
+localStorage.getItem("studentName") || "";
+
+const school =
+localStorage.getItem("school") || "";
+
+const email =
+localStorage.getItem("email") || "";
+
+
+document.getElementById(
+"profileName"
+).textContent =
+name || "학생 포트폴리오";
+
+
+document.getElementById(
+"profileInfo"
+).textContent =
+`${number || "학번"} · ${school || "학교"} · ${email || "이메일"}`;
+
+}
+
+
+/* 이미지 업로드 */
+
+function uploadImage(input, number) {
+
+const file = input.files[0];
+
+if (!file) return;
+
+
+const imageURL =
+URL.createObjectURL(file);
+
+
+const image =
+document.getElementById(
+"image" + number
+);
+
+
+const placeholder =
+document.getElementById(
+"placeholder" + number
+);
+
+
+image.src = imageURL;
+
+image.style.display = "block";
+
+placeholder.style.display = "none";
+
+}
+
+
+/* 저장된 정보 불러오기 */
+
+window.addEventListener(
+"load",
+function() {
+
+const number =
+localStorage.getItem(
+"studentNumber"
+);
+
+const name =
+localStorage.getItem(
+"studentName"
+);
+
+const school =
+localStorage.getItem(
+"school"
+);
+
+const email =
+localStorage.getItem(
+"email"
+);
+
+
+if(number) {
+
+document.getElementById(
+"studentNumber"
+).value = number;
+
+}
+
+
+if(name) {
+
+document.getElementById(
+"studentName"
+).value = name;
+
+}
+
+
+if(school) {
+
+document.getElementById(
+"school"
+).value = school;
+
+}
+
+
+if(email) {
+
+document.getElementById(
+"email"
+).value = email;
+
+}
+
+
+updateProfile();
+
+});
+
+</script>
 
 </body>
 </html>
